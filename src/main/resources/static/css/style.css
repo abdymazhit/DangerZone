@@ -1,0 +1,371 @@
+@font-face {
+    font-family: 'Akzidenz';
+    src: url('/fonts/AkzidenzGroteskPro-BoldEx.ttf') format('opentype'), url('/fonts/AkzidenzGroteskPro-BoldEx.woff') format('woff'), url('/fonts/AkzidenzGroteskPro-BoldEx.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Bold';
+    src: url('/fonts/SF-UI-Text-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Medium';
+    src: url('/fonts/SF-UI-Text-Medium.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Regular';
+    src: url('/fonts/SF-UI-Text-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bg-black: #000;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+:focus {
+    outline: none;
+}
+
+::selection {
+    background: #000;
+    /* Safari */
+}
+
+::-moz-selection {
+    background: #000;
+    /* Firefox */
+}
+
+@media only screen and ( max-width: 550px) {
+    .section-global {
+        margin-top: 100px !important;
+        font-size: 30px !important;
+    }
+    .advantage {
+        font-size: 14px !important;
+    }
+    .footer-size {
+        font-size: 14px !important;
+    }
+    .btn-sell {
+        font-size: 12px !important;
+    }
+    .team-number {
+        font-size: 14px !important;
+    }
+    .team-name {
+        font-size: 14px !important;
+    }
+    .team-points {
+        font-size: 14px !important;
+    }
+    .team-leader {
+        font-size: 12px !important;
+    }
+    .logo {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    .navbar {
+        overflow: hidden !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        margin: 0 0 0 0 !important;
+        z-index: 10;
+    }
+    .navbar-nav {
+        width: 100% !important;
+    }
+    .nav-link {
+        margin: 0 0 0 0 !important;
+        font-size: 14px !important;
+    }
+    .nick-develop {
+        display: none !important;
+    }
+    .footer {
+        margin-bottom: 300px !important;
+    }
+    .develop-ava {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .advantage .col {
+        margin: 15px 0px !important;
+    }
+    .advantage .col:last-child {
+        margin: 0px 0px !important;
+    }
+    .footer {
+        position: relative;
+        z-index: 1;
+    }
+    .table-string {
+        min-width: 300px !important;
+    }
+    .team-rating-global {
+        margin-top: 100px !important;
+        font-size: 30px !important;
+    }
+    .navbar-nav {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    .navbar-nav-2 {
+        display: flex !important;
+        visibility: visible !important;
+    }
+    .font-rules {
+        font-size: 14px !important;
+    }
+}
+
+body {
+    font-family: 'SF Relugar', sans-serif;
+    text-decoration: none;
+    background: #000;
+    min-height: 100%;
+    display: grid;
+    text-decoration: none;
+    color: #fafafa;
+    font-size: 14px;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow-x: hidden;
+    padding-right: 0 !important;
+}
+
+.font-Akz {
+    font-family: 'Akzidenz', sans-serif !important;
+}
+
+.font-SFBold {
+    font-family: 'SF Bold', sans-serif !important;
+}
+
+.font-SFMedium {
+    font-family: 'SF Medium', sans-serif !important;
+}
+
+.font-SFRegular {
+    font-family: 'SF Regular', sans-serif !important;
+}
+
+
+/* custom font-size */
+
+.font-25 {
+    font-size: 25px !important;
+}
+
+.font-14 {
+    font-size: 14px !important;
+}
+
+.font-16 {
+    font-size: 16px !important;
+}
+
+.font-18 {
+    font-size: 18px !important;
+}
+
+.font-20 {
+    font-size: 20px !important;
+}
+
+.font-60 {
+    font-size: 60px !important;
+}
+
+.font-70 {
+    font-size: 70px !important;
+}
+
+
+/* custom opacity */
+
+.opacity-50 {
+    opacity: 50%;
+}
+
+.opacity-10 {
+    opacity: 10%;
+}
+
+.opacity-100 {
+    opacity: 100% !important;
+}
+
+
+/* custom navbar */
+
+.active {
+    background: #000 !important;
+    padding: 15px 15px !important;
+    color: #fafafa !important;
+}
+
+.nav-link {
+    padding: 15px 15px !important;
+    margin: 0px 50px 0px 0px;
+    color: #808080;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #000000;
+    transition: color 0.3s;
+}
+
+.nav-link:last-child {
+    margin: 0px 0px 0px 0px;
+}
+
+.navbar {
+    background-color: #fafafa !important;
+    padding: 15px 0px !important;
+    color: #000;
+    margin-bottom: 200px;
+}
+
+
+/* custom margin */
+
+.mb-200 {
+    margin-bottom: 200px !important;
+}
+
+.mb-50 {
+    margin-bottom: 50px !important;
+}
+
+.mb-80 {
+    margin-bottom: 80px !important;
+}
+
+.mb-120 {
+    margin-bottom: 120px !important;
+}
+
+
+/* custom buttons */
+
+.btn-sell {
+    padding: 15px 90px !important;
+    background-color: #fafafa !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    font-size: 14px;
+}
+
+.rectangle {
+    background: #fafafa !important;
+    height: 1px !important;
+    width: 68px !important;
+}
+
+.develop-ava {
+    width: 50px;
+    height: 50px;
+    filter: grayscale(100);
+}
+
+.footer-href {
+    text-decoration: none !important;
+    color: #fafafa !important;
+    opacity: 50%;
+    transition: opacity 0.3s;
+}
+
+.footer-href:hover {
+    text-decoration: none !important;
+    color: #fafafa !important;
+    opacity: 100%;
+    transition: opacity 0.3s;
+}
+
+.section-global {
+    font-size: 60px;
+}
+
+.team-rating-global {
+    font-size: 70px;
+}
+
+.advantage {
+    font-size: 20px;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo-href {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+.table-string {
+    min-width: 1144px;
+    color: #fafafa !important;
+    height: 60px;
+}
+
+.league-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.navbar-nav-2 {
+    display: none;
+    visibility: hidden;
+}
+
+.footer-wrap {
+    width: 100%;
+    bottom: 0;
+    display: block;
+    border: none;
+}
+
+.font-rules {
+    font-size: 14px;
+}
+
+.accordion-button {
+    box-shadow: none !important;
+    background-color: #fff;
+    font-size: 14px;
+    height: 30px;
+    border: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.accordion-button::after {
+    background-image: url('/img/plus-black.svg');
+    padding: 0 0;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url('/img/plus-black.svg');
+    padding: 0 0;
+}
