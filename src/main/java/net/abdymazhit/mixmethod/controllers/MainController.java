@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * Отвечает за работу главных страниц
  *
- * @version   07.10.2021
+ * @version   20.10.2021
  * @author    Islam Abdymazhit
  */
 @Controller
@@ -28,6 +28,15 @@ public class MainController {
     @GetMapping("/rules")
     public String rules() {
         return "rules";
+    }
+
+    /**
+     * Выдает страницу персонала
+     * @return Страница персонала
+     */
+    @GetMapping("/personal")
+    public String personal() {
+        return "personal";
     }
 
     /**

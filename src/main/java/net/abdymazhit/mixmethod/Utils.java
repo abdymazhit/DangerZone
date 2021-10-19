@@ -3,7 +3,7 @@ package net.abdymazhit.mixmethod;
 /**
  * Инструменты для облегчения работы
  *
- * @version   07.10.2021
+ * @version   20.10.2021
  * @author    Islam Abdymazhit
  */
 public class Utils {
@@ -15,25 +15,25 @@ public class Utils {
      */
     public static String getLeagueImage(int points) {
         if(points <= 800) {
-            return "/img/leagues/1.svg";
+            return "/images/leagues/1.svg";
         } else if(points <= 950) {
-            return "/img/leagues/2.svg";
+            return "/images/leagues/2.svg";
         } else if(points <= 1100) {
-            return"/img/leagues/3.svg";
+            return"/images/leagues/3.svg";
         } else if(points <= 1250) {
-            return"/img/leagues/4.svg";
+            return"/images/leagues/4.svg";
         } else if(points <= 1400) {
-            return"/img/leagues/5.svg";
+            return"/images/leagues/5.svg";
         } else if(points <= 1550) {
-            return"/img/leagues/6.svg";
+            return"/images/leagues/6.svg";
         } else if(points <= 1700) {
-            return"/img/leagues/7.svg";
+            return"/images/leagues/7.svg";
         } else if(points <= 1850) {
-            return"/img/leagues/8.svg";
+            return"/images/leagues/8.svg";
         } else if(points <= 2000) {
-            return"/img/leagues/9.svg";
+            return"/images/leagues/9.svg";
         } else {
-            return"/img/leagues/10.svg";
+            return"/images/leagues/10.svg";
         }
     }
 }

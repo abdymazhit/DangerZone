@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Отвечает за работу страницы Team Rating
  *
- * @version   07.10.2021
+ * @version   20.10.2021
  * @author    Islam Abdymazhit
  */
 @Controller
@@ -51,15 +51,15 @@ public class TeamController {
         // Проверка, можно ли обновить рейтинг
         if(lastUpdate == null || currentTime.getTime() - lastUpdate.getTime() >= 30000) {
             Query query = entityManager.createNativeQuery("""
-            SELECT distinct t.id, @place\\:=@place+1 AS place, name, u.username as leader_name, points FROM teams AS t
-            INNER JOIN users AS u ON u.id = t.leader_id AND t.is_deleted IS NULL
+            SELECT distinct t.id, @place\\:=@place+1 AS place, t.name, t.points FROM teams AS TEAMS
+            INNER JOIN teams AS t ON t.id = TEAMS.id AND t.is_deleted IS NULL
             CROSS JOIN (SELECT @place\\:=0) as r
             ORDER BY points DESC LIMIT 100""", TeamModel.class);
             List<TeamModel> teamModels = query.getResultList();
 
             teams = new ArrayList<>();
             for(TeamModel teamModel : teamModels) {
-                Team team = new Team(teamModel.place, teamModel.name, teamModel.leaderName, teamModel.points);
+                Team team = new Team(teamModel.place, teamModel.name, teamModel.points);
                 teams.add(team);
             }
             lastUpdate = currentTime;

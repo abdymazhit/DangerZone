@@ -5,7 +5,7 @@ import net.abdymazhit.mixmethod.Utils;
 /**
  * Представляет собой команду
  *
- * @version   07.10.2021
+ * @version   20.10.2021
  * @author    Islam Abdymazhit
  */
 public class Team {
@@ -15,9 +15,6 @@ public class Team {
 
     /** Имя команды */
     public String name;
-
-    /** Имя лидера команды */
-    public String leaderName;
 
     /** Очки команды */
     public Integer points;
@@ -29,13 +26,11 @@ public class Team {
      * Инициализирует команду
      * @param place Место команды
      * @param name Имя команды
-     * @param leaderName Имя лидера команды
      * @param points Очки команды
      */
-    public Team(int place, String name, String leaderName, int points) {
+    public Team(int place, String name, int points) {
         this.place = place;
         this.name = name;
-        this.leaderName = leaderName;
         this.points = points;
         this.image = Utils.getLeagueImage(points);
     }
