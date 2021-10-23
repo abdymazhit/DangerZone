@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DangerZone - поборись за звание лучшего в мире!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/plugins/fontawesome/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light mb-5 flex-column flex-lg-row align-items-start">
+        <div class="container-xl justify-content-between">
+            <div class="d-flex">
+                <a href="/" class="navbar-brand"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navMenuContent">
+                <ul class="navbar-nav ms-auto mt-lg-0">
+                    <li class="nav-item">
+                        <a href="/">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-home menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rules">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-bookmark menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rating/single">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-user menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rating/team">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-users menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-md main-page">
+        <div class="row justify-content-center">
+            <div class="col-xl-12">
+
+                <div class="d-flex mb-5 align-items-center">
+                    <img class="vimeworld-logo me-5" src="images/logo/vimeworld.png" alt="">
+                    <div class="d-flex flex-column">
+                        <h5 class="text-black">Оставайся с Danger Zone и VimeWorld в 2021 году!</h5>
+                        <span class="text-light font-14">Вскоре мы поделимся анонсами наших новых событий! Подключайся, смотри, читай! </span>
+                    </div>
+                </div>
+
+                <h6 class="text-black">Недавние игры</h6>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mb-5 g-4">
+                    <div th:each="el: ${latestGames}" class="col">
+                        <div class="card w-100">
+                            <a th:href="'https://vimetop.ru/matches#' + ${el.matchId}" class="team-leading">
+                                <div class="card-body recent-tournaments-body">
+                                    <span th:text="'GAME-' + ${el.id}" class="text-color font-14"></span>
+                                    <h6 th:text="${el.mapName}" class="text-black mb-4"><span th:text="${el.format}" class="text-light fw-normal font-12"></span></h6>
+                                    <div class="d-flex justify-content-between">
+                                        <span th:text="${el.finishedAt} + ' мин. назад'" class="text-light font-12"><i class="far fa-calendar-alt"></i></span>
+                                        <span th:text="${el.firstTeamRatingChanges} + '/' + ${el.secondTeamRatingChanges}" class="text-light font-12"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-12 col-sm-12 col-md-3">
+                        <h6 class="text-black mt-4">Активные трансляции</h6>
+                        <div class="row">
+                            <div class="col">
+                                <div th:each="el: ${streams}" class="card card-body w-100">
+                                    <a th:href="${el.link}" class="team-leading">
+                                        <div class="active-broadcasting">
+                                            <div class="active-broadcasting-head mb-2">
+                                                <div class="position-absolute">
+                                                    <span class="mt-2 ml-2 badge bg-danger font-12 pills">ONLINE</span>
+                                                </div>
+                                                <img th:src="${el.image}" class="border-radius-12px w-100" alt="">
+                                            </div>
+                                            <div class="active-broadcasting-body mb-0">
+                                                <span th:text="${el.username}" class="text-color font-14"></span>
+                                                <h6 th:text="${el.title}" class="text-black mb-0"></h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr>
+                                </div>
+
+                                <div th:each="el: ${nostreams}" class="card card-body w-100">
+                                    <div class="d-flex flex-column justify-content-center align-middle align-items-center text-white-50 my-5">
+                                        <p class="text-light font-14 mt-2 mb-0">Активных трансляций нет</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrap">
+        <footer class="footer bg-light mt-5">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                        <a class="text-light fw-normal font-12 mb-0" href="/">
+                            <span class="text-black fw-normal font-12 mb-0">Danger Zone</span> <span class="text-light fw-normal font-12 mb-0">© 2021</span>
+                        </a>
+                    </div>
+                    <div class="col-6 d-flex flex-column align-items-end">
+                        <div class="d-flex flex-column align-items-start">
+                            <a class="text-light fw-normal font-12 mb-0" href="/personal">
+                                <span class="text-light fw-normal font-12 mb-0">Наша команда</span>
+                            </a>
+                            <a class="text-light fw-normal font-12 mb-0" target="_blank" href="/discord">
+                                <span class="text-light fw-normal font-12 mb-0">Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/plugins/jquery/jquery.min.js"></script>
+    <script src="js/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/plugins/jquery/jquery.autocomplete.js"></script>
+    <script src="js/plugins/jquery/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/jquery/jquery.toast.min.js"></script>
+    <script src="js/plugins/jquery/toggles.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

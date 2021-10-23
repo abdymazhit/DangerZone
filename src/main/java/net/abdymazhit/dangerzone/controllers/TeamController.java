@@ -1,7 +1,7 @@
-package net.abdymazhit.mixmethod.controllers;
+package net.abdymazhit.dangerzone.controllers;
 
-import net.abdymazhit.mixmethod.customs.Team;
-import net.abdymazhit.mixmethod.models.TeamModel;
+import net.abdymazhit.dangerzone.customs.Team;
+import net.abdymazhit.dangerzone.models.TeamModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Отвечает за работу страницы Team Rating
  *
- * @version   20.10.2021
+ * @version   23.10.2021
  * @author    Islam Abdymazhit
  */
 @Controller
@@ -50,11 +50,10 @@ public class TeamController {
 
         // Проверка, можно ли обновить рейтинг
         if(lastUpdate == null || currentTime.getTime() - lastUpdate.getTime() >= 30000) {
-            Query query = entityManager.createNativeQuery("""
-            SELECT distinct t.id, @place\\:=@place+1 AS place, t.name, t.points FROM teams AS TEAMS
-            INNER JOIN teams AS t ON t.id = TEAMS.id AND t.is_deleted IS NULL
-            CROSS JOIN (SELECT @place\\:=0) as r
-            ORDER BY points DESC LIMIT 100""", TeamModel.class);
+            Query query = entityManager.createNativeQuery("SELECT distinct t.id, @place\\:=@place+1 AS place, t.name, t.points FROM teams AS TEAMS " +
+            "INNER JOIN teams AS t ON t.id = TEAMS.id AND t.is_deleted IS NULL " +
+            "CROSS JOIN (SELECT @place\\:=0) as r " +
+            "ORDER BY points DESC LIMIT 100", TeamModel.class);
             List<TeamModel> teamModels = query.getResultList();
 
             teams = new ArrayList<>();

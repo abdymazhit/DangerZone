@@ -1,7 +1,7 @@
-package net.abdymazhit.mixmethod.controllers;
+package net.abdymazhit.dangerzone.controllers;
 
-import net.abdymazhit.mixmethod.customs.Player;
-import net.abdymazhit.mixmethod.models.PlayerModel;
+import net.abdymazhit.dangerzone.customs.Player;
+import net.abdymazhit.dangerzone.models.PlayerModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Отвечает за работу страницы Single Rating
  *
- * @version   07.10.2021
+ * @version   23.10.2021
  * @author    Islam Abdymazhit
  */
 @Controller
@@ -50,11 +50,11 @@ public class SingleController {
 
         // Проверка, можно ли обновить рейтинг
         if(lastUpdate == null || currentTime.getTime() - lastUpdate.getTime() >= 30000) {
-            Query query = entityManager.createNativeQuery("""
-            SELECT p.id, @place\\:=@place+1 AS place, u.username as name, points FROM players AS p
-            INNER JOIN users AS u ON u.id = p.player_id AND p.is_deleted IS NULL
-            CROSS JOIN (SELECT @place\\:=0) as r
-            ORDER BY points DESC LIMIT 100""", PlayerModel.class);
+            Query query = entityManager.createNativeQuery(
+                    "SELECT p.id, @place\\:=@place+1 AS place, u.username as name, points FROM players AS p " +
+            "INNER JOIN users AS u ON u.id = p.player_id AND p.is_deleted IS NULL " +
+            "CROSS JOIN (SELECT @place\\:=0) as r " +
+            "ORDER BY points DESC LIMIT 100", PlayerModel.class);
             List<PlayerModel> playerModels = query.getResultList();
 
             players = new ArrayList<>();

@@ -77,9 +77,18 @@ html {
     /* Safari */
 }
 
+.vimeworld-logo {
+    width: 298px;
+    height: 64px;
+}
+
 ::-moz-selection {
     background: var(--light-blue);
     /* Firefox */
+}
+
+.rules {
+    font-size: 14px;
 }
 
 body {
@@ -717,7 +726,7 @@ hr {
 }
 
 .text-color {
-    color: var(--blue);
+    color: #DA0037;
 }
 
 ul .circle {
@@ -836,7 +845,7 @@ div.dataTables_wrapper div.dataTables_processing {
     font-weight: 500;
     font-size: 12px;
     background: var(--blue);
-    ;
+;
 }
 
 .crown {
@@ -1878,6 +1887,9 @@ a>.text-light:hover {
     }
     .footer-logotipe {
         display: none;
+    }
+    .vimeworld-logo {
+        display: none !important;
     }
     .navbar-brand {
         background-image: url(../images/logo/phone_light.svg);

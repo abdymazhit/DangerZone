@@ -1,11 +1,11 @@
-package net.abdymazhit.mixmethod.customs;
+package net.abdymazhit.dangerzone.customs;
 
-import net.abdymazhit.mixmethod.Utils;
+import net.abdymazhit.dangerzone.Utils;
 
 /**
  * Представляет собой игрока
  *
- * @version   07.10.2021
+ * @version   23.10.2021
  * @author    Islam Abdymazhit
  */
 public class Player {

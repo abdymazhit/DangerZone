@@ -1,4 +1,4 @@
-package net.abdymazhit.mixmethod.models;
+package net.abdymazhit.dangerzone.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 /**
  * Представляет собой модель команды
  *
- * @version   20.10.2021
+ * @version   23.10.2021
  * @author    Islam Abdymazhit
  */
 @Entity

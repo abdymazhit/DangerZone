@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Rating - Danger Zone</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/plugins/fontawesome/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light mb-5 flex-column flex-lg-row align-items-start">
+        <div class="container-xl justify-content-between">
+            <div class="d-flex">
+                <a href="/" class="navbar-brand"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navMenuContent">
+                <ul class="navbar-nav ms-auto mt-lg-0">
+                    <li class="nav-item">
+                        <a href="/">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-home menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                            <i class="fas fa-bookmark menu"></i>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rating/single">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-user menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rating/team">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-users menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-xl">
+        <div class="row justify-content-center">
+            <div class="col-xl-12">
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="card w-100">
+                            <div class="card-header">
+                                <h5 class="text-black mb-0 font-14">Правила</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row rules">
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.</span> Запрещено любое использование читов/ПО/багов(CheatEngine/Liquidation/Niverso/H2W/Yammi/NetLimiter/NetBalance/XLAG/VPN/DNS/TCP Optimizer и т.п.)</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.1</span> Разрешена настройка реестра/java/адаптера/windows без использования посторонних программ. </p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.2</span> Запрещено ЛЮБОЕ хранение читов/ПО (пункт 1).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.3</span> Разрешены макросы/кликеры (кликер от liquidation запрещен).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.4</span> Запрещен баг блокхита.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.5</span> Запрещен баг лука (бегать с натянутой тетивой).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">1.6</span> Запрещено выходить из игры, когда по игроку бьют костями.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">2.</span> Запрещено использовать баги, которые затрудняют игровой процесс. (Кик определенного игрока с карты)</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">2.1</span> Удары и выстрелы из лука, когда моделька видна через блоки разрешены.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">2.2</span> Разрешено взрывать динамитом паутину для добычи ловушек.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">2.3</span> Запрещено проходить через блоки, используя кости тора.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">2.4</span> Запрещено выходить из игры, когда по игру бьют костями тора.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">2.5</span> Запрещен проход через блоки карты, которые невозможно сломать.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.</span> Запрещено использовать баги, которые затрудняют игровой процесс. (Кик определенного игрока с карты)</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.1</span> Сообщаете организатору о том, что нужно провести сс /m [ник организатора/помощника] SS [ник игрока].</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.2</span> Игроку, которого вызвали на SS запрещено выходить из игры, даже если с ним не связались сразу после игры.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.3</span> Во время SS, подозреваемый обязан выполнять условия ссера.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.4</span> Если игрок отказывается идти на SS, команда исключена с турнира.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.5</span> Во время SS, если подозреваемый получает 2 предупреждения, он покидает SS, а команда исключается.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.5.1</span> Подозреваемый может получить предупреждение за оскорбление ссера.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.5.2</span> Подозреваемый может получить предупреждение за неадекватное поведение (клики не туда куда надо, делать то, что не просят).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.5.3</span> Подозреваемый может получить предупреждение за отказ скачивания какой-либо программы для SS.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.6</span> Если игрок начинает утверждать, что ПО было запущено, но не было использовано, в любом случае, команда будет исключена. (факт того, что оно было запущено, остается фактом).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">3.7</span> Игрок может быть вызван на SS по просьбе администрации без доказательств.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">4.</span> Запрещена передача аккаунта Discord/передача аккаунта VimeWorld - карается ЧС на всех турнирах и исключением команды/игрока.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">4.1</span> Если игрок сыграл за одну команду, а после сыграл с другого аккаунта за другую команду, исключается вторая команда, а сам покидает турнир и попадает в ЧС на месяц.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">5.</span> Запрещено содействовать с противниками. (АП)</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">5.1</span> Если вы подозреваете команды в "тиминге", у вас должны быть доказательства, в виде переписки или видеодоказательства.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">6.</span> Запрещено играть с игроками, которые не записаны за вашу команду. (АП)</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">6.1</span> Если игрок не записан за команду, а игра уже началась, игрок будет исключен с карты (если он начнет бесконечно возвращаться, то будет исключена вся команда).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">6.2</span> Если организатор покинул карту, ничего не учитывается, назначается переигра (турнир), в случае рейтинга - отмена игры.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">7.</span> Запрещено оскорбление организаторов и участников турнира (Кик определенного игрока с карты).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">7.1</span> Запрещены оскорбления в беседе капитанов/дискорде.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">7.2</span> Правила оскорбления распространяются на беседу капитанов VK, Discord (под дискордом подразумевается переписка на сервере организации).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">7.3</span> Если игра назначена на 17:00, а игрок команды оскорбил противника, в 17:01, но не был на карте, оскорбившая команда получает предупреждение. (до 17:00 и после победы/поражения
+                                        оскорбления не учитываются).</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">7.4</span> Запрещены оскорбления в чате гильдии/пати/на стриме (независимо от того, где идёт трансляция) и т.п.</p>
+
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">8.</span> Во время игры участники обязаны находиться в нашем Discord-сервере, либо указанном главным организатором.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">9.</span> Запрещена любая попытка обмана организации - ЧС на 1+ месяц.</p>
+                                    <p class="card-text fw-normal"><span class="fw-bold text-color me-2">7.2</span> Решение организатора выше любых правил и опровергнуть его можно только с доказательствами.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrap">
+        <footer class="footer bg-light mt-5">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                        <a class="text-light fw-normal font-12 mb-0" href="/">
+                            <span class="text-black fw-normal font-12 mb-0">Danger Zone</span> <span class="text-light fw-normal font-12 mb-0">© 2021</span>
+                        </a>
+                    </div>
+                    <div class="col-6 d-flex flex-column align-items-end">
+                        <div class="d-flex flex-column align-items-start">
+                            <a class="text-light fw-normal font-12 mb-0" href="/personal">
+                                <span class="text-light fw-normal font-12 mb-0">Наша команда</span>
+                            </a>
+                            <a class="text-light fw-normal font-12 mb-0" target="_blank" href="/discord">
+                                <span class="text-light fw-normal font-12 mb-0">Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="../js/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="../js/plugins/jquery/jquery.min.js"></script>
+        <script src="../js/plugins/jquery/jquery.slimscroll.min.js"></script>
+        <script src="../js/plugins/jquery/toggles.min.js"></script>
+        <script src="../js/script.min.js"></script>
+    </div>
+</body>
+
+</html>

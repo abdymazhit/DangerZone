@@ -1,9 +1,9 @@
-package net.abdymazhit.mixmethod;
+package net.abdymazhit.dangerzone;
 
 /**
  * Инструменты для облегчения работы
  *
- * @version   20.10.2021
+ * @version   23.10.2021
  * @author    Islam Abdymazhit
  */
 public class Utils {

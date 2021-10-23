@@ -1,25 +1,16 @@
-package net.abdymazhit.mixmethod.controllers;
+package net.abdymazhit.dangerzone.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Отвечает за работу главных страниц
+ * Отвечает за работу остальных страниц
  *
- * @version   20.10.2021
+ * @version   23.10.2021
  * @author    Islam Abdymazhit
  */
 @Controller
-public class MainController {
-
-    /**
-     * Выдает главную страницу
-     * @return Главная страница
-     */
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+public class OtherControllers {
 
     /**
      * Выдает страницу правил
