@@ -1,5 +1,6 @@
 package net.abdymazhit.dangerzone.controllers;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.abdymazhit.dangerzone.customs.LatestGame;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 /**
  * Отвечает за работу главных страниц
  *
- * @version   23.10.2021
+ * @version   25.10.2021
  * @author    Islam Abdymazhit
  */
 @Controller
@@ -111,8 +112,10 @@ public class MainController {
                 String streamId = streamModel.link.replace("https://www.youtube.com/watch?v=", "");
                 String image = "https://img.youtube.com/vi/" + streamId + "/maxresdefault.jpg";
                 String title = getTitle(streamId);
-                Stream stream = new Stream(streamModel.id, streamModel.username, streamModel.link, image, title);
-                streams.add(stream);
+                if(title != null) {
+                    Stream stream = new Stream(streamModel.id, streamModel.username, streamModel.link, image, title);
+                    streams.add(stream);
+                }
             }
 
             lastUpdate = currentTime;
@@ -141,11 +144,16 @@ public class MainController {
         try (CloseableHttpClient httpClient = HttpClients.createDefault(); CloseableHttpResponse response = httpClient.execute(request)) {
             HttpEntity entity = response.getEntity();
             String jsonString = EntityUtils.toString(entity);
-
             JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-            JsonObject itemObject = jsonObject.get("items").getAsJsonArray().get(0).getAsJsonObject();
-            JsonObject snippetObject = itemObject.get("snippet").getAsJsonObject();
-            return snippetObject.get("title").getAsString();
+
+            JsonArray itemsArray = jsonObject.get("items").getAsJsonArray();
+            if(!itemsArray.isEmpty()) {
+                JsonObject itemObject = itemsArray.get(0).getAsJsonObject();
+                JsonObject snippetObject = itemObject.get("snippet").getAsJsonObject();
+                return snippetObject.get("title").getAsString();
+            } else {
+                return null;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
