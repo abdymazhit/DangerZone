@@ -68,7 +68,7 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mb-5 g-4">
                     <div th:each="el: ${latestGames}" class="col">
                         <div class="card w-100">
-                            <a th:href="'https://vimetop.ru/matches#' + ${el.matchId}" class="team-leading">
+                            <a th:href="'/single/game/' + ${el.id}" class="team-leading">
                                 <div class="card-body recent-tournaments-body">
                                     <span th:text="'GAME-' + ${el.id}" class="text-color font-14"></span>
                                     <h6 th:text="${el.mapName}" class="text-black mb-4"><span th:text="${el.format}" class="text-light fw-normal font-12"></span></h6>
@@ -104,8 +104,7 @@
                                     </a>
                                     <hr>
                                 </div>
-
-                                <div th:each="el: ${nostreams}" class="card card-body w-100">
+                                <div th:if="${streams.isEmpty()}" class="card card-body w-100">
                                     <div class="d-flex flex-column justify-content-center align-middle align-items-center text-white-50 my-5">
                                         <p class="text-light font-14 mt-2 mb-0">Активных трансляций нет</p>
                                     </div>

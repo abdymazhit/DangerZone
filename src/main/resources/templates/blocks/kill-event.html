@@ -1,0 +1,3 @@
+<h5 th:fragment="kill-event" class="text-black fw-normal font-14 nickname-nameteam m-0">
+    Игрок <span th:text="${el.killer}" th:class="${el.killerColor}"></span> убил игрока <span th:text="${el.target}" th:class="${el.targetColor}"></span> и у него осталось <span th:text="${el.hp}" class="red-color"></span> HP
+</h5>

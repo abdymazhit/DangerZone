@@ -1,9 +1,18 @@
 package net.abdymazhit.dangerzone;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+
 /**
  * Инструменты для облегчения работы
  *
- * @version   23.10.2021
+ * @version   06.11.2021
  * @author    Islam Abdymazhit
  */
 public class Utils {
@@ -35,5 +44,21 @@ public class Utils {
         } else {
             return"/images/leagues/10.svg";
         }
+    }
+
+    /**
+     * Отправляет GET запрос по URL
+     * @param url URL
+     * @return Результат запроса в типе String
+     */
+    public static String sendGetRequest(String url) {
+        HttpGet request = new HttpGet(url);
+        try (CloseableHttpClient httpClient = HttpClients.createDefault(); CloseableHttpResponse response = httpClient.execute(request)) {
+            HttpEntity entity = response.getEntity();
+            return EntityUtils.toString(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

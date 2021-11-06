@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 /**
  * Отвечает за работу главных страниц
  *
- * @version   25.10.2021
+ * @version   06.11.2021
  * @author    Islam Abdymazhit
  */
 @Controller
@@ -122,14 +122,7 @@ public class MainController {
         }
 
         model.addAttribute("latestGames", latestGames);
-
-        if(!streams.isEmpty()) {
-            model.addAttribute("streams", streams);
-        } else {
-            List<String> noStreams = new ArrayList<>();
-            noStreams.add("Активных трансляций нет");
-            model.addAttribute("nostreams", noStreams);
-        }
+        model.addAttribute("streams", streams);
 
         return "index";
     }
@@ -140,7 +133,8 @@ public class MainController {
      * @return Название трансляции
      */
     public static String getTitle(String streamId) {
-        HttpGet request = new HttpGet("https://www.googleapis.com/youtube/v3/videos?id=" + streamId + "&key=AIzaSyCcMeWhSB9TYGWnZ8z-EVUrCSonvQM-reI&part=snippet");
+        HttpGet request = new HttpGet("https://www.googleapis.com/youtube/v3/videos?id=" + streamId + "&key=%token%&part=snippet"
+                .replace("%token%", System.getenv("VIME_TOKEN")));
         try (CloseableHttpClient httpClient = HttpClients.createDefault(); CloseableHttpResponse response = httpClient.execute(request)) {
             HttpEntity entity = response.getEntity();
             String jsonString = EntityUtils.toString(entity);

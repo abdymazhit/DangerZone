@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - Danger Zone</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/plugins/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body th:class="${game}" >
+    <nav class="navbar navbar-expand-lg bg-light mb-5 flex-column flex-lg-row align-items-start">
+        <div class="container-xl justify-content-between">
+            <div class="d-flex">
+                <a href="/" class="navbar-brand"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navMenuContent">
+                <ul class="navbar-nav ms-auto mt-lg-0">
+                    <li class="nav-item">
+                        <a href="/">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-home menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rules">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-bookmark menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rating/single">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-user menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rating/team">
+                            <div class="nav-circle nav-link d-flex justify-content-center align-items-center">
+                                <i class="fas fa-users menu"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-xl">
+        <div class="nav-game mb-5 d-flex align-items-center justify-content-between">
+            <ul class="nav nav-pills" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link text-black fw-normal font-14 active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" role="tab" aria-controls="overview" aria-selected="false" href="#">Обзор</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-14 fw-normal text-black" id="scoretable-tab" data-bs-toggle="tab" data-bs-target="#scoretable" role="tab" aria-controls="scoretable" aria-selected="false" href="#">Статистика</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-14 fw-normal text-black" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" role="tab" aria-controls="history" aria-selected="false" href="#">История</a>
+                </li>
+            </ul>
+            <h5 th:text="${game.assistantName}" class="text-black fw-normal mb-0 font-14 align text-center"></h5>
+        </div>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4">
+                        <h5 th:text="${game.firstTeamName}" class="text-black mb-4 font-14 text-center"></h5>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <a th:each="el: ${game.firstTeamPlayers}" th:href="'https://vimeworld.ru/player/' + ${el.username}" class="socials-personal" target="_blank">
+                                            <div class="card card-body border-0">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="col-4 d-flex align-items-center">
+                                                        <img th:src="@{'https://skin.vimeworld.ru/helm/3d/' + ${el.username} +'.png'}" class="" height="50" width="50" alt="" />
+                                                    </div>
+                                                    <div class="col-4 d-flex flex-column align-items-lg-start">
+                                                        <h5 th:text="${el.username}" class="text-black nickname-nameteam m-0"></h5>
+                                                        <p th:text="${el.points} + ' очков'" class="text-light rating-player mb-0"></p>
+                                                    </div>
+                                                    <div class="col-4 d-flex d-flex align-items-center justify-content-end">
+                                                        <img th:src="${el.image}" class="" height="35" width="35" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <h5 class="text-black mb-4 font-14 text-center">Результаты</h5>
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div class="win-lose mb-4 d-flex justify-content-center align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <h5 th:if="${game.firstTeamRatingChanges gt 0}" th:text="'+' + ${game.firstTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                                <h5 th:if="${game.firstTeamRatingChanges lt 0}" th:text="${game.firstTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                                <h5 th:if="${game.firstTeamRatingChanges gt 0}" class="text-green mb-0 me-4 font-16 text-center">W</h5>
+                                                <h5 th:if="${game.firstTeamRatingChanges lt 0}" class="text-red mb-0 font-16 me-2 text-center">L</h5>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <h5 th:if="${game.secondTeamRatingChanges gt 0}" class="text-green mb-0 me-4 font-16 text-center">W</h5>
+                                                <h5 th:if="${game.secondTeamRatingChanges lt 0}" class="text-red mb-0 font-16 me-2 text-center">L</h5>
+                                                <h5 th:if="${game.secondTeamRatingChanges gt 0}" th:text="'+' + ${game.secondTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                                <h5 th:if="${game.secondTeamRatingChanges lt 0}" th:text="${game.secondTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                            </div>
+                                        </div>
+                                        <h5 th:text="${game.mapName}" class="text-black fw-normal mb-2 font-14 text-center"></h5>
+                                        <h5 th:text="${game.time}" class="text-black fw-normal mb-2 font-14 text-center"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <h5 th:text="${game.secondTeamName}" class="text-black mb-4 font-14 text-center"></h5>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <a th:each="el: ${game.secondTeamPlayers}" th:href="'https://vimeworld.ru/player/' + ${el.username}" class="socials-personal" target="_blank">
+                                            <div class="card card-body border-0">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="col-4 d-flex align-items-center">
+                                                        <img th:src="@{'https://skin.vimeworld.ru/helm/3d/' + ${el.username} +'.png'}" class="" height="50" width="50" alt="" />
+                                                    </div>
+                                                    <div class="col-4 d-flex flex-column align-items-lg-start">
+                                                        <h5 th:text="${el.username}" class="text-black nickname-nameteam m-0"></h5>
+                                                        <p th:text="${el.points} + ' очков'" class="text-light rating-player mb-0"></p>
+                                                    </div>
+                                                    <div class="col-4 d-flex d-flex align-items-center justify-content-end">
+                                                        <img th:src="${el.image}" class="" height="35" width="35" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade show" id="scoretable" role="tabpanel" aria-labelledby="scoretable-tab">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4">
+                        <h5 th:text="${game.firstTeamName}" class="text-black mb-4 font-14 text-center"></h5>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <a th:each="el: ${game.firstTeamPlayers}" th:href="'https://vimeworld.ru/player/' + ${el.username}" class="socials-personal" target="_blank">
+                                            <div class="card card-body border-0">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="col-4 d-flex d-flex align-items-lg-start">
+                                                        <h5 th:text="${el.username}" class="text-black nickname-nameteam m-0"></h5>
+                                                    </div>
+                                                    <div class="col-2 d-flex flex-column align-items-lg-start">
+                                                        <h5 class="text-black nickname-nameteam m-0">K</h5>
+                                                        <p th:text="${el.kills}" class="text-light rating-player mb-0"></p>
+                                                    </div>
+                                                    <div class="col-2 d-flex flex-column align-items-lg-start">
+                                                        <h5 class="text-black nickname-nameteam m-0">D</h5>
+                                                        <p th:text="${el.deaths}" class="text-light rating-player mb-0"></p>
+                                                    </div>
+                                                    <div class="col-4 d-flex justify-content-end align-items-lg-start">
+                                                        <span th:if="${el.isMvp}" class="badge text-black bg-warning">MVP</span>
+                                                        <span th:if="${el.isEvp}" class="badge text-black bg-evp">EVP</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <h5 class="text-black mb-4 font-14 text-center">Результаты</h5>
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div class="win-lose mb-4 d-flex justify-content-center align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <h5 th:if="${game.firstTeamRatingChanges gt 0}" th:text="'+' + ${game.firstTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                                <h5 th:if="${game.firstTeamRatingChanges lt 0}" th:text="${game.firstTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                                <h5 th:if="${game.firstTeamRatingChanges gt 0}" class="text-green mb-0 me-4 font-16 text-center">W</h5>
+                                                <h5 th:if="${game.firstTeamRatingChanges lt 0}" class="text-red mb-0 font-16 me-2 text-center">L</h5>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <h5 th:if="${game.secondTeamRatingChanges gt 0}" class="text-green mb-0 me-4 font-16 text-center">W</h5>
+                                                <h5 th:if="${game.secondTeamRatingChanges lt 0}" class="text-red mb-0 font-16 me-2 text-center">L</h5>
+                                                <h5 th:if="${game.secondTeamRatingChanges gt 0}" th:text="'+' + ${game.secondTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                                <h5 th:if="${game.secondTeamRatingChanges lt 0}" th:text="${game.secondTeamRatingChanges}" class="text-black mb-0 fw-normal me-2 font-14"></h5>
+                                            </div>
+                                        </div>
+                                        <h5 th:text="${game.mapName}" class="text-black fw-normal mb-2 font-14 text-center"></h5>
+                                        <h5 th:text="${game.time}" class="text-black fw-normal mb-2 font-14 text-center"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div class="win-lose mb-0 d-flex flex-column justify-content-center align-items-center">
+                                            <h5 class="text-black fw-normal mb-4 font-14 text-center d-flex align-items-center"><span class="badge text-black bg-warning me-2">MVP</span>Исключительно ценный игрок</h5>
+                                            <h5 class="text-black fw-normal mb-0 font-14 text-center d-flex align-items-center"><span class="badge text-black bg-evp me-2">EVP</span>Самый ценный игрок</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <h5 th:text="${game.secondTeamName}" class="text-black mb-4 font-14 text-center"></h5>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <a th:each="el: ${game.secondTeamPlayers}" th:href="'https://vimeworld.ru/player/' + ${el.username}" class="socials-personal" target="_blank">
+                                            <div class="card card-body border-0">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="col-4 d-flex d-flex align-items-lg-start">
+                                                        <h5 th:text="${el.username}" class="text-black nickname-nameteam m-0"></h5>
+                                                    </div>
+                                                    <div class="col-2 d-flex flex-column align-items-lg-start">
+                                                        <h5 class="text-black nickname-nameteam m-0">K</h5>
+                                                        <p th:text="${el.kills}" class="text-light rating-player mb-0"></p>
+                                                    </div>
+                                                    <div class="col-2 d-flex flex-column align-items-lg-start">
+                                                        <h5 class="text-black nickname-nameteam m-0">D</h5>
+                                                        <p th:text="${el.deaths}" class="text-light rating-player mb-0"></p>
+                                                    </div>
+                                                    <div class="col-4 d-flex justify-content-end align-items-lg-start">
+                                                        <span th:if="${el.isMvp}" class="badge text-black bg-warning">MVP</span>
+                                                        <span th:if="${el.isEvp}" class="badge text-black bg-evp">EVP</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="history" role="tabpanel" aria-labelledby="history-tab">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div th:each="el: ${game.events}">
+                                            <div class="history-col d-flex align-items-center justify-content-between mb-3">
+                                                <div class="left-history d-flex align-items-center">
+                                                    <img th:src="${el.image}" class="me-4 bed" alt="" />
+                                                    <h5 th:if="${el.type eq 'kill'}" th:insert="blocks/kill-event :: kill-event"></h5>
+                                                    <h5 th:if="${el.type eq 'bed'}" th:insert="blocks/bed-event :: bed-event"></h5>
+                                                </div>
+                                                <div class="right-history">
+                                                    <h5 th:text="${el.time}" class="text-black fw-normal font-14 nickname-nameteam m-0"></h5>
+                                                </div>
+                                            </div>
+                                            <div class="vert-polos mb-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrap">
+        <footer class="footer bg-light mt-5">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                        <a class="text-light fw-normal font-12 mb-0" href="/">
+                            <span class="text-black fw-normal font-12 mb-0">Danger Zone</span> <span class="text-light fw-normal font-12 mb-0">© 2021</span>
+                        </a>
+                    </div>
+                    <div class="col-6 d-flex flex-column align-items-end">
+                        <div class="d-flex flex-column align-items-start">
+                            <a class="text-light fw-normal font-12 mb-0" href="/personal">
+                                <span class="text-light fw-normal font-12 mb-0">Наша команда</span>
+                            </a>
+                            <a class="text-light fw-normal font-12 mb-0" target="_blank" href="/discord">
+                                <span class="text-light fw-normal font-12 mb-0">Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="/js/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/js/plugins/jquery/jquery.min.js"></script>
+    <script src="/js/plugins/jquery/jquery.slimscroll.min.js"></script>
+    <script src="/js/plugins/jquery/toggles.min.js"></script>
+    <script src="/js/script.min.js"></script>
+</body>
+</html>
